@@ -280,6 +280,9 @@ echo "田園都市線の運転状況: ".$denentoshiinfo."<br>";
     }else if  (preg_match("/一部列車に遅れ/", $denentoshiinfo)){
         echo "一部の電車が遅れています。";
         $dlstaus = "一部の電車が遅れています。";
+    }else if  (preg_match("/一部列車に運休/", $denentoshiinfo)){
+        echo "一部の電車が運休しています。";
+        $dlstaus = "一部の電車が運休しています。";
     }else if  (preg_match("/直通運転を中止/", $denentoshiinfo)){
         echo "直通運転を中止しています。";
         $dlstaus = "直通運転を中止しています。";
