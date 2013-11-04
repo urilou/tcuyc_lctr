@@ -88,6 +88,24 @@ if (preg_match("/$day/", $calendar)) {
     } else {}
   } else {}
 
+//2-限前の休講補講
+  $hourchecktoday = strpos("10", $hour);
+  if ($hourchecktoday !== false) {
+    $mincheckcanceltoday = strpos("30", $min);
+    if ($mincheckcanceltoday !== false) {
+      //補講情報を取得し出力する
+      passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/extra-next.php");
+      //補講
+      $filee="/home/users/1/mods.jp-usi/web/lecturebot/extra.txt";
+      $fde = file($filee);
+      $cnte =sizeof($fde);
+       echo $cnte;
+      for ($i = 1; $i <= $cnte; $i++) {
+        echo $cnte;//補講用
+        passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-extra.php");}
+    } else {}
+  } else {}
+
 //2限前の休講補講
   $hourchecktoday = strpos("10", $hour);
   if ($hourchecktoday !== false) {
@@ -109,6 +127,24 @@ if (preg_match("/$day/", $calendar)) {
       for ($i = 1; $i <= $cntc; $i++) {
         echo $cntc;//休講用
         passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-cancel.php");}
+      for ($i = 1; $i <= $cnte; $i++) {
+        echo $cnte;//補講用
+        passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-extra.php");}
+    } else {}
+  } else {}
+
+//3-限前の休講補講
+  $hourchecktoday = strpos("12", $hour);
+  if ($hourchecktoday !== false) {
+    $mincheckcanceltoday = strpos("50", $min);
+    if ($mincheckcanceltoday !== false) {
+      //補講情報を取得し出力する
+      passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/extra-next.php");
+      //補講
+      $filee="/home/users/1/mods.jp-usi/web/lecturebot/extra.txt";
+      $fde = file($filee);
+      $cnte =sizeof($fde);
+       echo $cnte;
       for ($i = 1; $i <= $cnte; $i++) {
         echo $cnte;//補講用
         passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-extra.php");}
@@ -142,6 +178,24 @@ if (preg_match("/$day/", $calendar)) {
     } else {}
   } else {}
 
+//4-限前の休講補講
+  $hourchecktoday = strpos("14", $hour);
+  if ($hourchecktoday !== false) {
+    $mincheckcanceltoday = strpos("35", $min);
+    if ($mincheckcanceltoday !== false) {
+      //補講情報を取得し出力する
+      passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/extra-next.php");
+      //補講
+      $filee="/home/users/1/mods.jp-usi/web/lecturebot/extra.txt";
+      $fde = file($filee);
+      $cnte =sizeof($fde);
+       echo $cnte;
+      for ($i = 1; $i <= $cnte; $i++) {
+        echo $cnte;//補講用
+        passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-extra.php");}
+    } else {}
+  } else {}
+
 //4限前の休講補講
   $hourchecktoday = strpos("14", $hour);
   if ($hourchecktoday !== false) {
@@ -169,6 +223,24 @@ if (preg_match("/$day/", $calendar)) {
     } else {}
   } else {}
 
+//5-限前の休講補講
+  $hourchecktoday = strpos("16", $hour);
+  if ($hourchecktoday !== false) {
+    $mincheckcanceltoday = strpos("20", $min);
+    if ($mincheckcanceltoday !== false) {
+      //補講情報を取得し出力する
+      passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/extra-next.php");
+      //補講
+      $filee="/home/users/1/mods.jp-usi/web/lecturebot/extra.txt";
+      $fde = file($filee);
+      $cnte =sizeof($fde);
+       echo $cnte;
+      for ($i = 1; $i <= $cnte; $i++) {
+        echo $cnte;//補講用
+        passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-extra.php");}
+    } else {}
+  } else {}
+
 //5限前の休講補講
   $hourchecktoday = strpos("16", $hour);
   if ($hourchecktoday !== false) {
@@ -190,6 +262,24 @@ if (preg_match("/$day/", $calendar)) {
       for ($i = 1; $i <= $cntc; $i++) {
         echo $cntc;//休講用
         passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-cancel.php");}
+      for ($i = 1; $i <= $cnte; $i++) {
+        echo $cnte;//補講用
+        passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-extra.php");}
+    } else {}
+  } else {}
+
+//6-限前の休講補講
+  $hourchecktoday = strpos("18", $hour);
+  if ($hourchecktoday !== false) {
+    $mincheckcanceltoday = strpos("05", $min);
+    if ($mincheckcanceltoday !== false) {
+      //補講情報を取得し出力する
+      passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/extra-next.php");
+      //補講
+      $filee="/home/users/1/mods.jp-usi/web/lecturebot/extra.txt";
+      $fde = file($filee);
+      $cnte =sizeof($fde);
+       echo $cnte;
       for ($i = 1; $i <= $cnte; $i++) {
         echo $cnte;//補講用
         passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/bot-extra.php");}

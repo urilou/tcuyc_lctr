@@ -262,6 +262,12 @@ echo "田園都市線の運転状況: ".$denentoshiinfo."<br>";
     }else if  (preg_match("/夜間作業遅延/", $denentoshiinfo)){
         echo "夜間作業遅延のため";
         $dlcause = "夜間作業遅延のため";
+    }else if  (preg_match("/災害復旧工事/", $denentoshiinfo)){
+        echo "災害復旧工事のため";
+        $dlcause = "災害復旧工事のため";
+    }else if  (preg_match("/ドア故障/", $denentoshiinfo)){
+        echo "ドア故障のため";
+        $dlcause = "ドア故障のため";
   }
 
 //現状パターン
