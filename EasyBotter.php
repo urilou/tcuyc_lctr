@@ -500,12 +500,12 @@ class EasyBotter
     }    
 
     function setUpdate($value){        
-        $url = "http://api.twitter.com/1.1/statuses/update.json";
+        $url = "https://api.twitter.com/1.1/statuses/update.json";
         return $this->_setData($url,$value);
     }            
 
     function getReplies($since_id = NULL){
-        $url = "http://api.twitter.com/1.1/statuses/mentions_timeline.json?";        
+        $url = "https://api.twitter.com/1.1/statuses/mentions_timeline.json?";        
         if ($since_id) {
             $url .= 'since_id=' . $since_id ."&";
         }

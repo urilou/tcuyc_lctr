@@ -29,6 +29,9 @@ echo "田園都市線の運転状況: ".$denentoshiinfo."<br>";
     }else if  (preg_match("/伊勢崎線内/", $denentoshiinfo)){
         echo "東武伊勢崎線での";
         $dlline = "東武伊勢崎線での";
+    }else if  (preg_match("/新宿線内/", $denentoshiinfo)){
+        echo "都営新宿線での";
+        $dlline = "都営新宿線での";
 
   //会社線
     }else if  (preg_match("/東急/", $denentoshiinfo)){
@@ -40,6 +43,9 @@ echo "田園都市線の運転状況: ".$denentoshiinfo."<br>";
     }else if  (preg_match("/東武/", $denentoshiinfo)){
         echo "東武線での";
         $dlline = "東武線での";
+    }else if  (preg_match("/都営/", $denentoshiinfo)){
+        echo "都営線での";
+        $dlline = "都営線での";
     }else if  (preg_match("/JR/", $denentoshiinfo)){
         echo "JR線での";
         $dlline = "JR線での";
@@ -307,6 +313,9 @@ echo "田園都市線の運転状況: ".$denentoshiinfo."<br>";
     }else if  (preg_match("/遅れと運休が/", $denentoshiinfo)){
         echo "遅れています。また、一部の電車は運休しています。";
         $dlstaus = "遅れています。また、一部の電車は運休しています。";
+    }else if  (preg_match("/再開しました。なお、列車に遅れ/", $denentoshiinfo)){
+        echo "運転を見合わせていましたが、再開しました。なお、遅れや運休がある可能性があります。";
+        $dlstaus = "運転を見合わせていましたが、再開しました。なお、遅れや運休がある可能性があります。";
     }else if  (preg_match("/再開し遅れが/", $denentoshiinfo)){
         echo "運転を見合わせていましたが、再開しました。遅れや運休がでています。";
         $dlstaus = "運転を見合わせていましたが、再開しました。遅れや運休がでています。";
