@@ -11,13 +11,13 @@ $lbi = $bluelineinfo;
 $lbi = str_replace(" ", "", $lbi);
 $lbi = str_replace("ƒuƒ‹[ƒ‰ƒCƒ“‚Í", "", $lbi);
 $lbi = str_replace("ƒuƒ‹[ƒ‰ƒCƒ“@", "", $lbi);
-$lbi = "y‰^sî•ñzŽs‰c’n‰º“Sƒuƒ‹[ƒ‰ƒCƒ“ >> ".$lbi;
+$lbi = "y‰^sî•ñzŽs‰c’n‰º“Sƒuƒ‹[ƒ‰ƒCƒ“ >> ".$lbi." http://cgi.city.yokohama.lg.jp/koutuu/kinkyu2/info.php?line=1";
 
-    if ($lbi == "y‰^sî•ñzŽs‰c’n‰º“Sƒuƒ‹[ƒ‰ƒCƒ“ >> •½í’Ê‚è‰^“]‚µ‚Ä‚¢‚Ü‚·B") {
+    if ($lbi == "y‰^sî•ñzŽs‰c’n‰º“Sƒuƒ‹[ƒ‰ƒCƒ“ >> •½í’Ê‚è‰^“]‚µ‚Ä‚¢‚Ü‚·B http://cgi.city.yokohama.lg.jp/koutuu/kinkyu2/info.php?line=1") {
         $lbi = "";
     } else {}
 
-    if ($lbi == "y‰^sî•ñzŽs‰c’n‰º“Sƒuƒ‹[ƒ‰ƒCƒ“ >> ") {
+    if ($lbi == "y‰^sî•ñzŽs‰c’n‰º“Sƒuƒ‹[ƒ‰ƒCƒ“ >>  http://cgi.city.yokohama.lg.jp/koutuu/kinkyu2/info.php?line=1") {
         $lbi = "";
     } else {}
 

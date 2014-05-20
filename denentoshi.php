@@ -4,7 +4,7 @@
   $html = file_get_html("http://transit.loco.yahoo.co.jp/traininfo/detail/114/0/");
   $filepath = "/home/users/1/mods.jp-usi/web/lecturebot/denentoshi.txt";
 
-$denentoshiinfo = $html->find("dl.serviceInfo",0)->find("dd",0)->innertext;
+$denentoshiinfo = $html->find("div.serviceInfo",0)->find("dd",0)->find("li",0)->innertext;
 echo "田園都市線の運転状況: ".$denentoshiinfo."<br>";
 
 //直通先パターン
@@ -274,6 +274,48 @@ echo "田園都市線の運転状況: ".$denentoshiinfo."<br>";
     }else if  (preg_match("/ドア故障/", $denentoshiinfo)){
         echo "ドア故障のため";
         $dlcause = "ドア故障のため";
+    }else if  (preg_match("/地震計誤作動に伴う安全確認/", $denentoshiinfo)){
+        echo "地震計誤作動に伴う安全確認を行ったため";
+        $dlcause = "地震計誤作動に伴う安全確認を行ったため";
+    }else if  (preg_match("/ホームドア故障/", $denentoshiinfo)){
+        echo "ホームドア故障のため";
+        $dlcause = "ホームドア故障のため";
+    }else if  (preg_match("/線路内立入/", $denentoshiinfo)){
+        echo "線路内立ち入りのため";
+        $dlcause = "線路内立ち入りのため";
+    }else if  (preg_match("/架線支障/", $denentoshiinfo)){
+        echo "架線支障のため";
+        $dlcause = "架線支障のため";
+    }else if  (preg_match("/信号関係点検/", $denentoshiinfo)){
+        echo "信号関係点検のため";
+        $dlcause = "信号関係点検のため";
+    }else if  (preg_match("/荷物挟まり対応/", $denentoshiinfo)){
+        echo "荷物挟まり対応のため";
+        $dlcause = "荷物挟まり対応のため";
+    }else if  (preg_match("/線路陥没/", $denentoshiinfo)){
+        echo "線路陥没のため";
+        $dlcause = "線路陥没のため";
+    }else if  (preg_match("/運行設備故障/", $denentoshiinfo)){
+        echo "運行設備故障のため";
+        $dlcause = "運行設備故障のため";
+    }else if  (preg_match("/車内安全確認/", $denentoshiinfo)){
+        echo "車内安全確認のため";
+        $dlcause = "車内安全確認のため";
+    }else if  (preg_match("/接続待ち/", $denentoshiinfo)){
+        echo "接続待ちのため";
+        $dlcause = "接続待ちのため";
+    }else if  (preg_match("/車両搬入作業/", $denentoshiinfo)){
+        echo "車両搬入作業のため";
+        $dlcause = "車両搬入作業のため";
+    }else if  (preg_match("/整備工事/", $denentoshiinfo)){
+        echo "整備工事のため";
+        $dlcause = "整備工事のため";
+    }else if  (preg_match("/竜巻注意情報発表/", $denentoshiinfo)){
+        echo "竜巻注意情報発表のため";
+        $dlcause = "竜巻注意情報発表のため";
+    }else if  (preg_match("/旅客対応/", $denentoshiinfo)){
+        echo "旅客対応のため";
+        $dlcause = "旅客対応のため";
   }
 
 //現状パターン

@@ -317,6 +317,7 @@ if (preg_match("/$day/", $calendar)) {
 //新着休講・新着補講情報（ツイートプログラムはbot-other.php）
   passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/cancel-new.php");
   passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/extra-new.php");
+  passthru("/usr/local/php5.4/bin/php /home/users/1/mods.jp-usi/web/lecturebot/tcu-new.php");
 
 //bot-other.phpの繰り返し実行
     $fileCancelnew = file("/home/users/1/mods.jp-usi/web/lecturebot/cancel-new.txt");
