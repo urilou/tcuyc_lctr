@@ -1,7 +1,7 @@
 <?php
 //============================================================
-//EasyBotter Ver2.1.1
-//updated 2012/11/2
+//EasyBotter Ver2.1.3
+//updated 2014/01/20
 //============================================================
 class EasyBotter
 {    
@@ -20,9 +20,9 @@ class EasyBotter
         
     function __construct()
     {                        
-        $dir = getcwd();
+        //$dir = getcwd();
         //$path = $dir."/PEAR";
-        $path = "/home/users/1/mods.jp-usi/web/lecturebot/PEAR";
+        $path = dirname(__FILE__) . "/PEAR";        
         set_include_path(get_include_path() . PATH_SEPARATOR . $path);
         $inc_path = get_include_path();
         chdir(dirname(__FILE__));
@@ -40,17 +40,10 @@ class EasyBotter
         $this->_logDataFile = "log.dat";
         $this->_log = json_decode(file_get_contents($this->_logDataFile),true);
         $this->_latestReply = $this->_log["latest_reply"];
-        $this->_latestReplyTimeline = $this->_log["latest_reply_tl"];        
-        
-        require_once 'HTTP/OAuth/Consumer.php';  
-        $this->consumer = new HTTP_OAuth_Consumer($this->_consumer_key, $this->_consumer_secret);    
-        $http_request = new HTTP_Request2();  
-        $http_request->setConfig('ssl_verify_peer', false);  
-        $consumer_request = new HTTP_OAuth_Consumer_Request;  
-        $consumer_request->accept($http_request);  
-        $this->consumer->accept($consumer_request);  
-        $this->consumer->setToken($this->_access_token);  
-        $this->consumer->setTokenSecret($this->_access_token_secret);                
+        $this->_latestReplyTimeline = $this->_log["latest_reply_tl"];                
+
+        require_once("HTTP/OAuth/Consumer.php");  
+		$this->OAuth_Consumer_build();
         $this->printHeader();
     }
        
@@ -92,14 +85,14 @@ class EasyBotter
         $header .= '<head>';
         $header .= '<meta http-equiv="content-language" content="ja" />';
         $header .= '<meta http-equiv="content-type" content="text/html; charset=UTF-8" />';
-        $header .= '<title>休講情報ボット</title>';
+        $header .= '<title>EasyBotter</title>';
         $header .= '</head>';
         $header .= '<body><pre>';
-        print $header;
+        //print $header;
     }
     //表示用HTML
     function printFooter(){
-        echo "</body></html>";
+        //echo "</body></html>";
     }
 
 //============================================================
@@ -182,7 +175,7 @@ class EasyBotter
                 }
             }
         }else{
-            $message = $cron."分以内に受け取った未返答のリプライはないようです。<br /><br />";
+            $message = $cron."分以内に受け取った未返答のリプライはないようです。<br />";
             echo $message;
             $results[] = $message;
         }
@@ -217,12 +210,12 @@ class EasyBotter
                     }
                 }
             }else{
-                $message = $cron."分以内のタイムラインに未反応のキーワードはないみたいです。<br /><br />";
+                $message = $cron."分以内のタイムラインに未反応のキーワードはないみたいです。<br />";
                 echo $message;
                 $results = $message;
             }
         }else{
-            $message = $cron."分以内のタイムラインに未反応のキーワードはないみたいです。<br /><br />";
+            $message = $cron."分以内のタイムラインに未反応のキーワードはないみたいです。<br />";
             echo $message;
             $results = $message;        
         }
@@ -243,7 +236,7 @@ class EasyBotter
             foreach($followlist as $id){    
                 $response = $this->followUser($id);
                 if(empty($response["errors"])){
-                    echo $response["name"]."(@<a href='https://twitter.com/".$response["screen_name"]."'>".$response["screen_name"]."</a>)をフォローしました<br /><br />";
+                    echo $response["name"]."(@<a href='https://twitter.com/".$response["screen_name"]."'>".$response["screen_name"]."</a>)をフォローしました<br />";
                 }
             }
         }            
@@ -475,14 +468,14 @@ class EasyBotter
             $message = "Twitterへの投稿に成功しました。<br />";
             $message .= "@<a href='http://twitter.com/".$response["user"]["screen_name"]."' target='_blank'>".$response["user"]["screen_name"]."</a>";
             $message .= "に投稿したメッセージ：".$response["text"];
-            $message .= " <a href='http://twitter.com/".$response["user"]["screen_name"]."/status/".$response["id_str"]."' target='_blank'>http://twitter.com/".$response["user"]["screen_name"]."/status/".$response["id_str"]."</a><br /><br />";
+            $message .= " <a href='http://twitter.com/".$response["user"]["screen_name"]."/status/".$response["id_str"]."' target='_blank'>http://twitter.com/".$response["user"]["screen_name"]."/status/".$response["id_str"]."</a><br />";
             echo $message;
             return array("result"=> $message);
         }else{
             $message = "「".$status."」を投稿しようとしましたが失敗しました。<br />";
             echo $message;
             echo $response["errors"][0]["message"];               
-            echo "<br /><br />";
+            echo "<br />";
             return array("error" => $message);
         }
     }
@@ -491,13 +484,27 @@ class EasyBotter
 //============================================================
 //基本的なAPIを叩くための関数
 //============================================================
-    function _setData($url, $value = array()){                
+    function _setData($url, $value = array()){
+		$this->OAuth_Consumer_build();//ここでHTTP_OAuth_Consumerを作り直し
         return json_decode($this->consumer->sendRequest($url, $value, "POST")->getBody(), true);
     }    
 
-    function _getData($url){                
+    function _getData($url){
+		$this->OAuth_Consumer_build();//ここでHTTP_OAuth_Consumerを作り直し
         return json_decode($this->consumer->sendRequest($url, array(), "GET")->getBody(), true);
     }    
+
+	function OAuth_Consumer_build(){
+        $this->consumer = new HTTP_OAuth_Consumer($this->_consumer_key, $this->_consumer_secret);    
+        $http_request = new HTTP_Request2();  
+        $http_request->setConfig('ssl_verify_peer', false);  
+        $consumer_request = new HTTP_OAuth_Consumer_Request;  
+        $consumer_request->accept($http_request);  
+        $this->consumer->accept($consumer_request);  
+        $this->consumer->setToken($this->_access_token);  
+        $this->consumer->setTokenSecret($this->_access_token_secret);
+		return;                
+	}
 
     function setUpdate($value){        
         $url = "https://api.twitter.com/1.1/statuses/update.json";
