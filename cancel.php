@@ -37,7 +37,7 @@
         $data_item4 = $cancel_data_html->find('tr',3)->find('td td span.splz',4+$run_length+($run_length*5))->innertext;
         $data_item4 = str_replace('　', '', $data_item4);
         $data_item5 = $cancel_data_html->find('tr',3)->find('td td span.splz',5+$run_length+($run_length*5))->innertext;
-        $cancel_data[] = '【'.$data_item0.'】'.$data_item1.' '.$data_item2.'　'.$data_item3.'（'.$data_item4.'　'.$data_item5.'）'."\n";
+        $cancel_data[] = '【'.$data_item0.'】今日 >> '.$data_item2.'　'.$data_item3.'（'.$data_item4.'　'.$data_item5.'）'."\n";
       }
     }
 

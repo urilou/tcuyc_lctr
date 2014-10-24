@@ -38,7 +38,7 @@
         $data_item4 = $extra_data_html->find("table",4)->find('td span.splz',4+$run_length+($run_length*5))->innertext;
         $data_item4 = str_replace('　', '', $data_item4);
         $data_item5 = $extra_data_html->find("table",4)->find('td span.splz',5+$run_length+($run_length*5))->innertext;
-        $extra_data[] = '【'.$data_item0.'】'.$data_item1.' '.$data_item2.'　'.$data_item3.'（'.$data_item4.'　'.$data_item5.'）'."\n";
+        $extra_data[] = '【'.$data_item0.'】今日 >> '.$data_item2.'　'.$data_item3.'（'.$data_item4.'　'.$data_item5.'）'."\n";
       }
 
     }
@@ -139,7 +139,7 @@
       $data_item4 = str_replace('　', '', $data_item4);
       $data_item5 = $extra_data_html->find("table",4)->find('td span.splz',5+$run_length+($run_length*5))->innertext;
       $extra_data_new[] = '[新着]【'.$data_item0.'】'.$data_item1.' '.$data_item2.'　'.$data_item3.'（'.$data_item4.'　'.$data_item5.'）'."\n";
-      $extra_api_v3[] = "{\"day\":\"".$data_item1."\",\"period\":\"".$data_item2."\",\"subject\":\"".$data_item3."\",\"teacher\":\"".$data_item4."\",\"room\":\"".$data_item5."\"}";
+      $extra_api_v3[] = "{\"day\":\"".$data_item1."\",\"period\":\"".$data_item2."\",\"subject\":\"".$data_item3."\",\"lecturer\":\"".$data_item4."\",\"room\":\"".$data_item5."\"}";
 
     }
 
